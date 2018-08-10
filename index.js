@@ -1,5 +1,5 @@
 let express = require("express");
-let tracker = require("./tracker.js");
+let clients = require("./clients.js");
 let bodyParser = require("body-parser");
 
 const app = express();
@@ -8,9 +8,23 @@ const theParser = bodyParser.json();
 let lastClientID = 0;
 let client = [];
 
+app.use(express.static('public'));
+
+
+
 app.get("/clients",function(request,response,next){
-    return response.json(tracker);
+    let newClient = {"name":"Bob"};
+    newClient.clientId = parseInt(clients[clients.length-1].clientId)+1;
+    newClient.long="";
+    newClient.location="";
+    clients.push(newClient);
+    return response.json(clients);
    });
+
+app.post("/locations",function(request,response,next){
+
+});
+
 
    
 app.listen(3002, (err) => {
