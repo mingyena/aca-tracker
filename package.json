@@ -1,0 +1,22 @@
+{
+  "name": "aca-tracker-ruiliu",
+  "version": "1.0.0",
+  "description": "Let's create an app that will let us see where people are.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mingyena/aca-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mingyena/aca-tracker/issues"
+  },
+  "homepage": "https://github.com/mingyena/aca-tracker#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
