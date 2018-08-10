@@ -22,6 +22,11 @@ app.post("/clients",function(request,response,next){
     return response.json(clients);
    });
 
+   app.post("/locations",function(request,response,next){
+        let newClient = {"id":3, lat:"30.23",long:"-97.7"};
+        
+   });
+
 
    
 app.listen(3002, (err) => {
