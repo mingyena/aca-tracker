@@ -1,5 +1,6 @@
 let express = require("express");
 let clients = require("./clients.js");
+let fetch = require('node-fetch');
 let bodyParser = require("body-parser");
 
 const app = express();
@@ -20,13 +21,6 @@ app.post("/clients",function(request,response,next){
     clients.push(newClient);
     return response.json(clients);
    });
-
-app.post("/locations",function(request,response,next){
-    let newClient = {"id":3, lat:"30.23",long:"-97.7"};
-    clients.push(newClient);
-    return response.send(newClient);
-
-});
 
 
    
