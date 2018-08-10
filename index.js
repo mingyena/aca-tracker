@@ -1,11 +1,15 @@
 let express = require("express");
+let tracker = require("./tracker.js");
 let bodyParser = require("body-parser");
 
 const app = express();
 const theParser = bodyParser.json();
 
-app.get("/secret",function(request,response,next){
-    response.send("Secret Information");
+let lastClientID = 0;
+let client = [];
+
+app.get("/clients",function(request,response,next){
+    return response.json(tracker);
    });
 
    
