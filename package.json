@@ -18,6 +18,7 @@
   "homepage": "https://github.com/mingyena/aca-tracker#readme",
   "dependencies": {
     "express": "^4.16.3",
+    "node-fetch": "^2.2.0",
     "nodemon": "^1.18.3"
   }
 }

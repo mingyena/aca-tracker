@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 
 
-app.get("/clients",function(request,response,next){
+app.post("/clients",function(request,response,next){
     let newClient = {"name":"Bob"};
     newClient.clientId = parseInt(clients[clients.length-1].clientId)+1;
     newClient.long="";
@@ -22,6 +22,9 @@ app.get("/clients",function(request,response,next){
    });
 
 app.post("/locations",function(request,response,next){
+    let newClient = {"id":3, lat:"30.23",long:"-97.7"};
+    clients.push(newClient);
+    return response.send(newClient);
 
 });
 
