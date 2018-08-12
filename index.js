@@ -22,33 +22,35 @@ app.post("/clients",function(request,response,next){
     return response.json(clients);
    });
 
-   app.post("/locations",function(request,response,next){
-        let newClient = {"id":3, "lat":"30.23","long":"-97.7"};
-        let fetch = require('node-fetch');
+app.post("/locations",function(request,response,next){
+    let newClient = {"id":3, "lat":"30.23","long":"-97.7"};
+    let fetch = require('node-fetch');
 
-        fetch('http://nominatim.openstreetmap.org/reverse?format=json&lat='+newClient.lat+'&lon='+newClient.long+'&zoom=18&addressdetails=1', 
-        { 
-        method: 'GET', 
-        headers: {
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
-        }
-        })
-        .then(response => response.json())
-        .then(data => {
-            newClient.lat = data.lat;
-            console.log(data.lat);
-            newClient.long = data.lon;
-            newClient.address = data.address;
-            clients.push(newClient);
-            return response.json(clients);
-        });
-
-    
+    fetch('http://nominatim.openstreetmap.org/reverse?format=json&lat='+newClient.lat+'&lon='+newClient.long+'&zoom=18&addressdetails=1', 
+    { 
+    method: 'GET', 
+    headers: {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36"
+    }
+    })
+    .then(response => response.json())
+    .then(data => {
+        newClient.lat = data.lat;
+        console.log(data.lat);
+        newClient.long = data.lon;
+        newClient.address = data.address;
+        clients.push(newClient);
+        return response.json(clients);
+    });
 
 
-   });
 
 
+});
+
+app.get("/locations",function(request,response,next){
+    return response.json(clients);
+});
    
 app.listen(3002, (err) => {
 if (err) {
