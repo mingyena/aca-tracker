@@ -27,7 +27,7 @@ app.post("/clients",function(request,response){
    });
 
 app.post("/locations",function(request,response,next){
-    let newClient = {"id":3, "lat":"30.23","long":"-97.7"};
+    let newClient = request.body;
     let fetch = require('node-fetch');
 
     fetch('http://nominatim.openstreetmap.org/reverse?format=json&lat='+newClient.lat+'&lon='+newClient.long+'&zoom=18&addressdetails=1', 

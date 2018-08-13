@@ -1,0 +1,34 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+<div class="main" style="width:100%;max-width:960;display:block;margin-left:auto;margin-right:auto">
+
+</div>
+
+<script>
+    getLocation();
+
+    function getLocation() {
+        let options = {method: "get",
+                        headers: {
+                            "Content-Type": "application/json"}
+                    };            
+        fetch("/locations", options).then(function(response) {
+            return response.json();
+        }).then(function(data){
+            let newLocation = JSON.stringify(data);
+            $("div").html(newLocation);
+            console.log("test");
+        })
+        .catch(function(err) {
+        // Boo!
+        });
+
+        setTimeout(getLocation, 2000);
+    }
+
+
+    
+</script>
