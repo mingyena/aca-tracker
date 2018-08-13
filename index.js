@@ -20,6 +20,7 @@ app.post("/clients",function(request,response){
     newClient = request.body;
     newClient.clientId = parseInt(clients[clients.length-1].clientId)+1;
    // console.log(request.body);
+    newClient.lat=" ";
     newClient.long=" ";
     newClient.location= ""; 
     clients.push(newClient);
@@ -42,7 +43,6 @@ app.post("/locations",function(request,response,next){
         let currentClient = {};
         currentClient = clients[clients.length-1];
         currentClient.lat = data.lat;
-        //console.log(data.lat);
         currentClient.long = data.lon;
         currentClient.location = data.address;
         //console.log(clients);
