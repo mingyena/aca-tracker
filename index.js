@@ -39,12 +39,15 @@ app.post("/locations",function(request,response,next){
     })
     .then(response => response.json())
     .then(data => {
-        newClient.lat = data.lat;
+        let currentClient = {};
+        currentClient = clients[clients.length-1];
+        currentClient.lat = data.lat;
         //console.log(data.lat);
-        newClient.long = data.lon;
-        newClient.address = data.address;
-        clients.push(newClient);
-        return response.json(clients);
+        currentClient.long = data.lon;
+        currentClient.location = data.address;
+        //console.log(clients);
+        
+        return response.json(currentClient);
     });
 
 
@@ -53,7 +56,8 @@ app.post("/locations",function(request,response,next){
 });
 
 app.get("/locations",function(request,response,next){
-    return response.json(clients);
+    console.log(clients);
+    return response.json(clients[clients.length-1]);
 });
    
 app.listen(3002, (err) => {
