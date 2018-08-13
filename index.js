@@ -40,7 +40,7 @@ app.post("/locations",function(request,response,next){
     .then(response => response.json())
     .then(data => {
         newClient.lat = data.lat;
-        console.log(data.lat);
+        //console.log(data.lat);
         newClient.long = data.lon;
         newClient.address = data.address;
         clients.push(newClient);
