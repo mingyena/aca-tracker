@@ -4,20 +4,24 @@ let fetch = require('node-fetch');
 let bodyParser = require("body-parser");
 
 const app = express();
-const theParser = bodyParser.json();
+let theParser = bodyParser.json();
 
 let lastClientID = 0;
 let client = [];
+
+app.use(theParser);
 
 app.use(express.static('public'));
 
 
 
-app.post("/clients",function(request,response,next){
-    let newClient = {"name":"Bob"};
+app.post("/clients",function(request,response){
+    let newClient = {};
+    newClient = request.body;
     newClient.clientId = parseInt(clients[clients.length-1].clientId)+1;
-    newClient.long="";
-    newClient.location="";
+   // console.log(request.body);
+    newClient.long=" ";
+    newClient.location= ""; 
     clients.push(newClient);
     return response.json(clients);
    });
