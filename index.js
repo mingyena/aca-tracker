@@ -41,13 +41,15 @@ app.post("/locations",function(request,response,next){
     .then(response => response.json())
     .then(data => {
         let currentClient = {};
-        currentClient = clients[clients.length-1];
+        //use find to find the same ID as this client
+        currentClient = clients.find(ele=> {return ele.clientID ==newClient.clientID});
+        //currentClient = clients[clients.length-1];
         currentClient.lat = data.lat;
         currentClient.long = data.lon;
         currentClient.location = data.address;
+        clients.push(currentClient);
         //console.log(clients);
-        
-        return response.json(currentClient);
+        return response.json(clients);
     });
 
 
